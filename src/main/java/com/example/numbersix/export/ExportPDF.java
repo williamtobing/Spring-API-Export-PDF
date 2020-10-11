@@ -25,7 +25,7 @@ public class ExportPDF {
             PdfWriter.getInstance(document, out);
             document.open();
 
-            // Add Text to PDF file
+            // Add Data to PDF file
             Font font = FontFactory.getFont(FontFactory.COURIER, 14, BaseColor.BLACK);
             Paragraph para = new Paragraph( "https://api.github.com/users?per_page=50", font);
             para.setAlignment(Element.ALIGN_CENTER);
