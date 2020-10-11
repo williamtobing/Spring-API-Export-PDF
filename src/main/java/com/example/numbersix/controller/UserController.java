@@ -2,8 +2,6 @@ package com.example.numbersix.controller;
 
 import com.example.numbersix.entity.User;
 import com.example.numbersix.export.ExportPDF;
-import com.example.numbersix.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -23,24 +21,16 @@ import java.util.List;
 @RestController
 public class UserController {
 
-//    @Autowired
-//    UserRepository userRepository;
-
-    @GetMapping("/welcome")
+    @GetMapping("/test")
     public String list() {
-        return "welcome";
+        return "Welcome!";
     }
 
-    @GetMapping(value = "/exportpdf", produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping(value = "/export", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> userPDFReport(HttpServletResponse response) throws IOException {
 
         RestTemplate restTemplate = new RestTemplate();
-//        List<User> allUsers = restTemplate.getForObject("https://api.github.com/users?per_page=50", ArrayList.class);
         List<User> allUsers = restTemplate.getForObject("https://api.github.com/users?per_page=50", ArrayList.class);
-//        System.out.println(allUsers);
-
-//        List<User> allUsers = userRepository.findAll();
-
 
         ByteArrayInputStream bis = ExportPDF.userPDFReport(allUsers);
 

@@ -12,6 +12,7 @@ public class RestAPI {
         RestTemplate restTemplate = new RestTemplate();
         List<User> user = restTemplate.getForObject("https://api.github.com/users?per_page=50", ArrayList.class);
         System.out.println(user);
+        System.out.print("Jumlah User: ");
         System.out.println(user.size());
     }
 
