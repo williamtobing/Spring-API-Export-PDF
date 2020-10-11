@@ -32,10 +32,12 @@ public class ExportPDF {
             document.add(para);
             document.add(Chunk.NEWLINE);
 
+            Font font2 = FontFactory.getFont(FontFactory.COURIER, 10, BaseColor.BLACK);
             RestTemplate restTemplate = new RestTemplate();
             String allUsers = restTemplate.getForObject("https://api.github.com/users?per_page=50", String.class);
-            Paragraph para2 = new Paragraph(allUsers, font);
+            Paragraph para2 = new Paragraph(allUsers, font2);
             document.add(para2);
+
             document.close();
 
         }catch (DocumentException e) {

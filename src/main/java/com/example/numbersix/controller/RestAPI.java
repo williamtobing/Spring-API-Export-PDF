@@ -16,8 +16,4 @@ public class RestAPI {
         System.out.println(user.size());
     }
 
-    public static void main(String[] args) {
-        callRest();
-    }
-
 }
